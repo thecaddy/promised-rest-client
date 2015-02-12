@@ -1,0 +1,19 @@
+{
+  "name": "promised-rest-client",
+  "version": "1.0.0",
+  "description": "A simple rest client I, @thecaddy, use to hit apis that return json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thecaddy/promised-rest-client.git"
+  },
+  "author": "Joel Trost <joel.trost@gmail.com> (https://github.com/stoodder/finchjs)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thecaddy/promised-rest-client/issues"
+  },
+  "homepage": "https://github.com/thecaddy/promised-rest-client"
+}
