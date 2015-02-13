@@ -105,7 +105,7 @@ module.exports = function(api){
       return submit(options);
     },
     post: function(url, obj){
-      return insert(url, obj)
+      return this.insert(url, obj)
     }
   }
 }
