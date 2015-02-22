@@ -37,6 +37,7 @@ function submit(options){
 function getReqObj(url, obj){
   if(typeof url === 'object') return url;
   else {
+    obj = {}
     obj.url = url
     return obj
   }
