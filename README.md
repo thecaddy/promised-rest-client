@@ -45,7 +45,7 @@ All queries return a promise.
 
 
 ```
-var data = require('promised-rest-client')('http://woohoo.com/')
+var data = require('promised-rest-client')({url: 'http://woohoo.com/'})
 
 //Submits a get request to 'http://woohoo.com/bam/pow/shoot?count=true'
 data.get({

@@ -1,7 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
-var request = require('request');
+var _ = require('lodash')
+var request = require('request')
 
 function getUrl(api, obj){
   var url = api + obj.url;
@@ -51,26 +51,36 @@ module.exports = function(api){
       obj = getReqObj(url, obj);
 
       var options ={
-        url: getUrl(api, obj),
-        method: 'GET'
+        url: getUrl(api.url, obj),
+        method: 'GET',
+        headers: {}
       }
+
       if(obj.qs && !_.isEmpty(obj.qs)){
         options.qs = obj.qs
       }
+      if(api.sign){
+        options = api.sign.set(api, options)
+      }
+
       return submit(options);
     },
     update: function(url, obj){
       obj = getReqObj(url, obj)
 
       var options ={
-        url: getUrl(api,obj),
-        method: 'PUT'
+        url: getUrl(api.url,obj),
+        method: 'PUT',
+        headers: {}
       }
       if(obj.qs && !_.isEmpty(obj.qs)){
         options.qs = obj.qs
       }
       if(obj.body && !_.isEmpty(obj.body)){
         options.form = obj.body
+      }
+      if(api.sign){
+        options = api.sign.set(api, options)
       }
 
       return submit(options);
@@ -79,14 +89,18 @@ module.exports = function(api){
       obj = getReqObj(url, obj)
 
       var options ={
-        url: getUrl(api,obj),
-        method: 'POST'
+        url: getUrl(api.url,obj),
+        method: 'POST',
+        headers: {}
       }
       if(obj.qs && !_.isEmpty(obj.qs)){
         options.qs = obj.qs
       }
       if(obj.body && !_.isEmpty(obj.body)){
         options.form = obj.body
+      }
+      if(api.sign){
+        options = api.sign.set(api, options)
       }
       return submit(options);
     },
@@ -94,14 +108,18 @@ module.exports = function(api){
       obj = getReqObj(url, obj)
 
       var options ={
-        url: getUrl(api,obj),
-        method: 'DELETE'
+        url: getUrl(api.url,obj),
+        method: 'DELETE',
+        headers: {}
       }
       if(obj.qs && !_.isEmpty(obj.qs)){
         options.qs = obj.qs
       }
       if(obj.body && !_.isEmpty(obj.body)){
         options.form = obj.body
+      }
+      if(api.sign){
+        options = api.sign.set(api, options)
       }
       return submit(options);
     },
