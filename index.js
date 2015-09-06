@@ -11,12 +11,13 @@ function getUrl(api, obj){
 function submit(options){
   return new Promise(function(resolve, reject) {
     // do a thing, possibly async, then…
+    options.json = true
     request(options, function(err, resp, body){
       if(err) reject(err);
       else {
         if(resp.statusCode === 200){
           try{
-            resolve(JSON.parse(resp.body));
+            resolve(resp.body);
           }catch(e){
             reject(new Error(resp.statusCode + ': ' + resp.body));
           }
@@ -77,7 +78,7 @@ module.exports = function(api){
         options.qs = obj.qs
       }
       if(obj.body && !_.isEmpty(obj.body)){
-        options.form = obj.body
+        options.body = obj.body
       }
       if(api.sign){
         options = api.sign.set(api, options)
@@ -97,7 +98,7 @@ module.exports = function(api){
         options.qs = obj.qs
       }
       if(obj.body && !_.isEmpty(obj.body)){
-        options.form = obj.body
+        options.body = obj.body
       }
       if(api.sign){
         options = api.sign.set(api, options)
@@ -116,7 +117,7 @@ module.exports = function(api){
         options.qs = obj.qs
       }
       if(obj.body && !_.isEmpty(obj.body)){
-        options.form = obj.body
+        options.body = obj.body
       }
       if(api.sign){
         options = api.sign.set(api, options)
